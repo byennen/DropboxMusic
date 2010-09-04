@@ -1,11 +1,14 @@
 #container {
 	width: 1024px;
 	font-family: 'Lucida Grande', Arial, Helvetica, Verdana, sans-serif;
-	font-size: 12px;
+	font-size: 1em;
+	background: white;
+	border: 1px solid darkgrey;
+	margin-top: 20px;
+	margin-left: 20px;
 }
 
 #container h1 {
-	color: darkGray;
 	font-family: Lobster, serif;
 	font-size: 4em;
 	font-style: normal;
@@ -21,7 +24,7 @@
 }
 
 #mainbox {
-	width: 500px;
+	width: 600px;
 	margin-left: auto;
   margin-right: auto;
 }
@@ -44,4 +47,50 @@ a:hover {
 
 ul {
 	list-style: none;
+}
+
+.jam {
+	border-radius: 5px;
+}
+
+input {
+	border: 1px solid #8F8F8F;
+	border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;
+	font-size: 1.3em;
+	padding: 5px;
+	width: 320px;
+}
+
+input[type="submit"] {
+	width: 200px;
+	margin-left: 10px;
+	background-color: #3392CE;
+	background-image: url(https://event-horizon.appspot.com/gfx/submitbg.png);
+	background-position: 0px 50%;
+	background-repeat: repeat-x;
+	border: 1px solid #2C8ECC;
+	border-bottom-left-radius: 10px 10px;
+	border-bottom-right-radius: 10px 10px;
+	border-top-left-radius: 10px 10px;
+	border-top-right-radius: 10px 10px;
+	color: white;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+background-position: -450px 50%;
+}
+
+#create {
+	padding-left: 20px;
+	margin: 10px;
+}
+
+.jams {
+	width: 250px;
+	margin-left: auto;
+	margin-right: auto;
 }

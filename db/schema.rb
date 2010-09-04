@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100904140034) do
+ActiveRecord::Schema.define(:version => 20100904144913) do
 
   create_table "jams", :force => true do |t|
     t.string   "uid"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20100904140034) do
     t.datetime "updated_at"
   end
 
+  add_index "jams", ["uid", "dir"], :name => "index_jams_on_uid_and_dir", :unique => true
   add_index "jams", ["uid"], :name => "index_jams_on_uid"
 
 end

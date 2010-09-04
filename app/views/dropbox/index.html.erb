@@ -1,7 +1,16 @@
-<ul>
-<% @dirs.each do |dir| %>
-  <% if dir.is_dir %>
-    <li><a href="/dropbox<%= dir.path %>"><%= dir.path %></a> - <%= debug(dir.contents)%></li>
+<div id="create">
+  <%= form_tag({:action => :create}) do %>
+
+  <input type="text" name="create" />
+
+  <input type="submit" name="submit" id="submit" value="Create JamBox" />
   <% end %>
+</div>
+
+<div class="jams">
+<ul>
+<% @jam_dirs.each do |dir| %>
+    <li class="jam"><a href="/dropbox<%= dir %>"><%= dir[1..-1] %></a></li>
 <% end %>
 </ul>
+</div>

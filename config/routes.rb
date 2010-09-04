@@ -1,13 +1,15 @@
 Jambox::Application.routes.draw do
   get "dropbox/authorize"
 
-  get "dropbox/upload"
-  post "dropbox/upload"
+  match "dropbox/:path/upload_sample" => 'dropbox#upload_sample'
   
   get "dropbox/index"
   get "dropbox" => 'dropbox#index'
+  post "dropbox/jam"
+  post "dropbox/create"
   
   match 'dropbox/:path' => 'dropbox#dir'
+  match 'dropbox/:path/download' => 'dropbox#download'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,7 +1,20 @@
-<ul>
-<% @dirs.each do |dir| %>
-  <% if not dir.is_dir %>
-    <li><a href="/dropbox/<%= dir.path %>"><%= dir.path %></a></li>
+<div id="uploadsample">
+  <%= form_tag({:action => :upload_sample, :path => @dir_path}, :multipart => true) do %>
+
+  <%= file_field_tag 'file' %>
+
+  <%= submit_tag("Upload Sample") %>
   <% end %>
+</div>
+
+<div id="files">
+<ul>
+<% @files.each do |file| %>
+    <li><%= file.path[@dir_path.length+2..-1] %></li>
 <% end %>
 </ul>
+</div>
+
+<script type="text/javascript">
+  downloadFiles('<%=@dir_path%>');
+</script>
