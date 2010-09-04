@@ -1,0 +1,7 @@
+<ul>
+<% @dirs.each do |dir| %>
+  <% if dir.is_dir %>
+    <li><a href="/dropbox<%= dir.path %>"><%= dir.path %></a> - <%= debug(dir.contents)%></li>
+  <% end %>
+<% end %>
+</ul>
