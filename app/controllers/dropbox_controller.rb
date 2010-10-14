@@ -6,7 +6,7 @@ class DropboxController < ApplicationController
   def index
     account = get_dropbox_session().account()
     
-    @dir_path = "/music"
+    @dir_path = "/samples"
     @files = files(get_dropbox_session(), @dir_path)
     @title = "Dashboard"
   end
@@ -29,7 +29,7 @@ class DropboxController < ApplicationController
   end
   
   def dir
-    @dir_path = "/music"
+    @dir_path = "/samples"
     @files = files(get_dropbox_session(), @dir_path)
   end
   
@@ -62,7 +62,7 @@ class DropboxController < ApplicationController
   
   def jam
     account = get_dropbox_session().account()
-    jam = params["/music/" + :dir]
+    jam = params["/samples/" + :dir]
     
     Jam.create(:uid => account.uid, :dir => jam)
     render :text => "OK"
