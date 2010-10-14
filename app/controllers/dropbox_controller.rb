@@ -6,8 +6,8 @@ class DropboxController < ApplicationController
   def index
     account = get_dropbox_session().account()
     
-    jams = Jam.find_all_by_uid(account.uid)
-    @jam_dirs = jams.collect { |j| j.dir }
+    # jams = Jam.find_all_by_uid(account.uid)
+    # @jam_dirs = jams.collect { |j| j.dir }
   end
   
   def create
