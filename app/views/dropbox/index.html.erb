@@ -9,8 +9,8 @@
 
 <div class="jams">
 <ul>
-<%# @jam_dirs.each do |dir| %>
-    <li class="jam"><a href="/dropbox<%#= dir %>"><%#= dir[1..-1] %></a></li>
-<%# end %>
+<% @jam_dirs.each do |dir| %>
+    <li class="jam"><a href="/dropbox<%= dir %>"><%= dir[1..-1] %></a></li>
+<% end %>
 </ul>
 </div>
