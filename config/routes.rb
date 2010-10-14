@@ -5,16 +5,15 @@ Jambox::Application.routes.draw do
   #dashboard
   match 'dashboard' => 'dashboard#index', :as => :dashboard
   match 'invite' => 'welcome#invite', :as => :invite
+  get "dropbox/authorize"
   
   #upload
   match 'upload' => 'dropbox#dir', :as => :upload
 
-  get "dropbox/authorize"
-
   match "dropbox/:path/upload_sample" => 'dropbox#upload_sample'
   
   # get "dropbox/index"
-  # get "dropbox" => 'dropbox#index'
+  get "dropbox" => 'dashboard#index'
   post "dropbox/jam"
   post "dropbox/create"
   

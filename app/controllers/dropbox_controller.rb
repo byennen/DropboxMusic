@@ -39,7 +39,7 @@ class DropboxController < ApplicationController
       dropbox_session.authorize(params)
       session[:dropbox_session] = dropbox_session.serialize # re-serialize the authenticated session
 
-      redirect_to :action => 'index'
+      redirect_to dashboard_url
     else
       dropbox_session = Dropbox::Session.new('gaos6hoy4sbfmbl', 'cm8r1sbmfttpmi0')
       session[:dropbox_session] = dropbox_session.serialize
@@ -72,15 +72,15 @@ class DropboxController < ApplicationController
     dir_path = params[:path]
     
     pid = fork do
-      FileUtils.mkdir_p ROOT_DIR + dir_path
+      FileUtils.mkdir_p dir_path
 
       dropbox_session = get_dropbox_session()
       files = files(dropbox_session, dir_path)
       files.each do | file |
   puts "downloading "+file.path
         file_contents = dropbox_session.download file.path, :mode => :dropbox
-  puts "downloaded, now writing to "+ROOT_DIR+file.path
-        File.open(ROOT_DIR+file.path, 'wb') do |f| f.write(file_contents) end
+  puts "downloaded, now writing to "+file.path
+        File.open(file.path, 'wb') do |f| f.write(file_contents) end
   puts "done"
       end
     end
