@@ -1,5 +1,6 @@
 GEM
   remote: http://rubygems.org/
+  remote: http://gems.github.com/
   specs:
     abstract (1.0.0)
     actionmailer (3.0.0)
@@ -37,6 +38,7 @@ GEM
       oauth (>= 0.3.6)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    haml (3.0.21)
     i18n (0.4.1)
     json (1.4.6)
     mail (2.2.5)
@@ -90,6 +92,7 @@ PLATFORMS
 
 DEPENDENCIES
   dropbox
+  haml
   mysql (= 2.8.1)
   oauth
   oauth-plugin

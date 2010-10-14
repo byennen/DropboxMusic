@@ -1,16 +1,8 @@
-<div id="create">
-  <%= form_tag({:action => :create}) do %>
-
-  <input type="text" name="create" />
-
-  <input type="submit" name="submit" id="submit" value="Create JamBox" />
-  <% end %>
-</div>
-
-<div class="jams">
+<div id="files">
+  <h2>Files in the Box</h2>
 <ul>
-<% @jam_dirs.each do |dir| %>
-    <li class="jam"><a href="/dropbox<%= dir %>"><%= dir[1..-1] %></a></li>
+<% @files.each do |file| %>
+    <li><%= link_to file.path[@dir_path.length+2..-1], "#" %></li>
 <% end %>
 </ul>
 </div>

@@ -1,15 +1,14 @@
 class DropboxController < ApplicationController
   before_filter :login_required, :except => ['authorize']
 
-  ROOT_DIR = "/tmp/jambox/"
+  # ROOT_DIR = "/tmp/jambox/"
 
   def index
     account = get_dropbox_session().account()
     
-    
-    
-    jams = Jam.find_all_by_uid(account.uid)
-    @jam_dirs = jams.collect { |j| j.dir }
+    @dir_path = "/music"
+    @files = files(get_dropbox_session(), @dir_path)
+    @title = "Dashboard"
   end
   
   def create
@@ -17,7 +16,7 @@ class DropboxController < ApplicationController
     dropbox_session = get_dropbox_session()
     begin
       dropbox_session.create_folder path, :mode => :dropbox
-      dropbox_session.create_folder path+'/samples', :mode => :dropbox
+      dropbox_session.create_folder path, :mode => :dropbox
     rescue Dropbox::FileExistsError
     end
     
@@ -30,8 +29,8 @@ class DropboxController < ApplicationController
   end
   
   def dir
-    @dir_path = params[:path]
-    @files = files(get_dropbox_session(), @dir_path+'/samples')
+    @dir_path = "/music"
+    @files = files(get_dropbox_session(), @dir_path)
   end
   
   def authorize
@@ -51,11 +50,11 @@ class DropboxController < ApplicationController
   def upload_sample
     dropbox_session = get_dropbox_session()
     if request.method == "POST" then
-      dropbox_session.upload params[:file], params[:path]+'/samples', :mode => :dropbox
+      dropbox_session.upload params[:file], params[:path], :mode => :dropbox
       redirect_to(:action => 'index')
     else
       @dir_path = params[:path]
-      @files = files(dropbox_session, @dir_path+'/samples')
+      @files = files(dropbox_session, @dir_path)
       
       render :action => :dir
     end
@@ -63,7 +62,7 @@ class DropboxController < ApplicationController
   
   def jam
     account = get_dropbox_session().account()
-    jam = params[:dir]
+    jam = params["/music/" + :dir]
     
     Jam.create(:uid => account.uid, :dir => jam)
     render :text => "OK"
@@ -91,13 +90,7 @@ class DropboxController < ApplicationController
   end
   
   def files(dropbox_session, dir_path)
-    files = []
-    jam_files = dropbox_session.list dir_path, :mode => :dropbox
-    jam_files.each do | file | 
-puts file.path
-      files << file if ! file.is_dir and file.path =~ /\.(mp3)$/
-    end
-    return files
+    @jam_files = dropbox_session.list dir_path, :mode => :dropbox
   end
   
     def music(dropbox_session, dir_path)
