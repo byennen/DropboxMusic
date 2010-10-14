@@ -1,0 +1,1 @@
+require 'thumble_monks/asset_auto_include'

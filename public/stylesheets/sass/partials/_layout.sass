@@ -1,0 +1,41 @@
+body
+  background: #EEE url('../../images/background.png') repeat-x
+  color: #000
+  
+#container
+  width: 980px
+  margin: 0 auto 20px
+  
+#menu
+  margin: 40px 0 0
+  ul
+    height: 30px
+    float: right
+    margin: 0 10px 0 0
+  li
+    display: inline
+    background: #fff
+    padding: 5px 10px
+    font-size: 20px
+    text-shadow: 1px 1px 0 #CCC
+  li:hover
+    background: #000
+  li:hover a
+    color: #fff
+
+#wrapper
+  background: #fff
+  clear: both
+  padding: 20px
+  +round-corners(10px)
+  +box-shadow(1px, 1px, 7px, rgba(0,0,0,0.50))
+  
+table
+  width: 90%
+  th
+    font-size: 25px
+    font-weight: 700
+    padding: 0 0 20px 0
+  td
+    padding: 10px 0
+    border-bottom: #ccc 1px solid

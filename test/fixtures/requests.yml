@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  artist: MyString
+  song: MyString
+  done: false
+
+two:
+  artist: MyString
+  song: MyString
+  done: false

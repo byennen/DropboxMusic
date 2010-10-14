@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
   def get_dropbox_session
     Dropbox::Session.deserialize(session[:dropbox_session])
   end
+  
+  def files(dropbox_session, dir_path)
+    @jam_files = dropbox_session.list dir_path, :mode => :dropbox
+  end
 end

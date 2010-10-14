@@ -1,0 +1,5 @@
+#files
+  %h2 Files in the Box
+  %ul
+  - @files.each do |file|
+    %li= link_to file.path[@dir_path.length+2..-1], "#"

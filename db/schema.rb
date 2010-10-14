@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100904144913) do
+ActiveRecord::Schema.define(:version => 20101014073946) do
 
   create_table "jams", :force => true do |t|
     t.string   "uid"
@@ -21,5 +21,13 @@ ActiveRecord::Schema.define(:version => 20100904144913) do
 
   add_index "jams", ["uid", "dir"], :name => "index_jams_on_uid_and_dir", :unique => true
   add_index "jams", ["uid"], :name => "index_jams_on_uid"
+
+  create_table "requests", :force => true do |t|
+    t.string   "artist"
+    t.string   "song"
+    t.boolean  "done"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

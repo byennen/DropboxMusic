@@ -1,0 +1,60 @@
+AssetAutoInclude
+=====================
+
+== Homepage
+  http://github.com/gabrielg/asset_auto_include
+  
+== Resources
+
+Install
+ * Run the following command:
+ script/plugin install git://github.com/gabrielg/asset_auto_include.git
+ 
+== Usage
+
+ Add the following to the head of your template file
+
+ <%= javascript_auto_include_tags %>
+ <%= stylesheet_auto_include_tags %>
+  
+ Now each time the template is loaded javascript files in the public/javascripts/app
+ folder and CSS files in the public/stylesheets/app folder that correspond to the name of the 
+ current controller or view will be auto loaded. It's also possible for the same javascript 
+ or CSS file to be loaded by multiple views by adding the name of each view to the filename 
+ separated by the "-" character, e.g. to load a javascript file in the new and edit views 
+ create a file named new-edit.js. Any number of views can be strung together using this naming 
+ convention. For example:
+
+ /public
+   /javascripts
+     /app
+       /users
+         controller.js
+         edit.js
+       /roles
+         controller.js
+       /accounts
+         show-new-edit-create.js
+   /stylesheets
+     /app
+       /users
+         controller.css
+         edit.css
+  
+ Assuming the above file structure loading each of the following urls would include:
+ 
+ mydomain.com/users             # includes controller.js and controller.css
+ mydomain.com/users/edit/1      # includes controller.js, edit.js, and edit.css
+ mydomain.com/users/show/1      # includes controller.js
+ mydomain.com/roles             # includes roles.js
+ mydomain.com/accounts          # no files included
+ mydomain.com/accounts/show/1   # includes show.js and show-new-edit-create.js
+ mydomain.com/accounts/new      # includes show-new-edit-create.js
+ mydomain.com/accounts/edit/1   # includes show-new-edit-create.js
+ mydomain.com/accounts/create   # includes show-new-edit-create.js
+
+== Acknowledgements 
+
+  Thanks to http://github.com/kernow/javascript_auto_include and
+  http://github.com/abradburne/javascript_auto_include for the base to work
+  from.

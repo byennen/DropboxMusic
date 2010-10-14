@@ -1,0 +1,23 @@
+!!! 5
+%html{ :lang => "en-US", "xml:lang" => "en-US", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ 'http-equiv' => "content-type", :content => "text/html; charset=utf-8" }
+    %meta{ :name => "Author", :content => "Lance Ennen" }
+    %meta{ :name => "viewport", :content => "width=1024" }
+    %title= 'DropBoxMusic.info - ' + @title ||= "Welcome"
+    %meta{ :name => "Keywords", :content => "DropBoxMusic.info" }
+    %meta{ :name => "Description", :content => "DropBoxMusic.info"}
+    = stylesheet_link_tag 'compiled/main.css'
+    = stylesheet_auto_include_tags
+    /%link{ :rel => "shortcut icon", :href => "" }
+  %body
+    .container_12
+      - if flash[:notice]
+        #notice
+          %p= flash[:notice]
+      - if flash[:error]
+        #error
+          %p= flash[:error]
+      = yield
+  = javascript_include_tag 'jquery', 'application'
+  = javascript_auto_include_tags

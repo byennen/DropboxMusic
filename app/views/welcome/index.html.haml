@@ -1,9 +1,9 @@
-
-= image_tag("mrt.gif", :style => "text-align:center;")
-%h1 DropBoxMusic.info
-%p Welcome, to DropBoxMusic.info. This is an invite only site.
-.links
-  %ul
-    %li= link_to "Enter", dropbox_path
-    %li= link_to "Request Invite", root_path  
+#welcome   
+  = image_tag("mrt.gif", :style => "text-align:center;")
+  %h1 DropBoxMusic.info
+  %p Welcome to DropBoxMusic.info. This is an invite only site.
+  .links
+    %ul
+      %li= link_to "Enter", dashboard_path
+      %li= link_to "Request Invite", root_path, :id => "request"
  

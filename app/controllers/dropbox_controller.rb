@@ -89,17 +89,14 @@ class DropboxController < ApplicationController
     render :text => "OK"
   end
   
-  def files(dropbox_session, dir_path)
-    @jam_files = dropbox_session.list dir_path, :mode => :dropbox
-  end
-  
-    def music(dropbox_session, dir_path)
-      music = []
-      jam_files = dropbox_session.list 'music', :mode => :dropbox
-      jam_files.each do | file | 
-  puts file.path
-        files << file if ! file.is_dir and file.path =~ /\.(mp3)$/
-      end
-      return files
-    end
+  # idea
+  #   def music(dropbox_session, dir_path)
+  #     music = []
+  #     jam_files = dropbox_session.list 'music', :mode => :dropbox
+  #     jam_files.each do | file | 
+  # puts file.path
+  #       files << file if ! file.is_dir and file.path =~ /\.(mp3)$/
+  #     end
+  #     return files
+  #   end
  end
