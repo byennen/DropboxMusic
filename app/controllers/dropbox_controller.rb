@@ -6,6 +6,8 @@ class DropboxController < ApplicationController
   def index
     account = get_dropbox_session().account()
     
+    
+    
     jams = Jam.find_all_by_uid(account.uid)
     @jam_dirs = jams.collect { |j| j.dir }
   end
@@ -97,4 +99,14 @@ puts file.path
     end
     return files
   end
+  
+    def music(dropbox_session, dir_path)
+      music = []
+      jam_files = dropbox_session.list 'music', :mode => :dropbox
+      jam_files.each do | file | 
+  puts file.path
+        files << file if ! file.is_dir and file.path =~ /\.(mp3)$/
+      end
+      return files
+    end
  end
