@@ -46,6 +46,7 @@ GEM
     mime-types (1.16)
     multipart (0.2.1)
     multipart-post (1.0.1)
+    mysql (2.8.1)
     oauth (0.4.3)
     oauth-active-resource (0.4.6)
       activeresource
@@ -79,7 +80,6 @@ GEM
     soundcloud-ruby-api-wrapper (0.4.8)
       oauth (>= 0.3.6)
       oauth-active-resource (>= 0.4.4)
-    sqlite3-ruby (1.2.5)
     thor (0.14.0)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
@@ -90,9 +90,9 @@ PLATFORMS
 
 DEPENDENCIES
   dropbox
+  mysql (= 2.8.1)
   oauth
   oauth-plugin
   rails (= 3.0.0)
   soundcloud-auth
   soundcloud-ruby-api-wrapper
-  sqlite3-ruby (= 1.2.5)
